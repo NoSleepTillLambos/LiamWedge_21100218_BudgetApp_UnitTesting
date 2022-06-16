@@ -1,17 +1,36 @@
 import React from 'react';
 import "../css/Tax.css";
+import { useState } from 'react';
+
+function Tax({addSalary}) {
 
 
-function Tax(props) {
+  const [text, setText] = useState("");
+
+  const handleSubmit = (e) => {
+
+    e.preventDefault();
+    addSalary(text);
+    setText("");
+  }
+
   return (
     <>
-    <div className='tax-div'>
-      <h3>Tax brackets</h3>
-    </div>
+      <form className='form' onSubmit={handleSubmit}>
 
-    <div className='salary-expenses' onSubmit={props.AddIncome}>
-    <h3>Salary and expenses</h3>
-    </div>
+        {/* inputs for the first text field / users salary */}
+        <input 
+          type="text" 
+          className='text-field' 
+          placeholder='Name' 
+          value={text}
+          onChange= {e => setText(e.target.value) }
+        />
+
+        <input type="number" className='salary' placeholder='salary'/>
+        <input type="submit" className='submit-btn'/>
+        
+      </form>
     </>
     
   )
