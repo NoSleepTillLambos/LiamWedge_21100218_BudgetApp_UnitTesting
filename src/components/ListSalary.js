@@ -1,18 +1,16 @@
-import React from 'react'
-import "../css/ListSalary.css"
-
+import React from "react";
+import "../css/ListSalary.css";
 
 // this is the listing component
-function ListSalary({text}) {
+function ListSalary({ text }) {
   return (
     <>
-    <div className='list-item'>
-      <p>{text}</p>
-      <input type="button"/>
-    </div>
+      <div className="list-item">
+        <p>{text}</p>
+        <button />
+      </div>
     </>
-    
-  )
+  );
 }
 
-export default ListSalary
+export default ListSalary;
