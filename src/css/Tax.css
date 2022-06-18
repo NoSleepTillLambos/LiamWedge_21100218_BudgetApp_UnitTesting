@@ -1,53 +1,50 @@
 h3 {
-    font-weight: 300;
-    margin-top: 10px;
-    color: white;
+  font-weight: 300;
+  margin-top: 10px;
+  color: white;
 }
 .form {
-    display: flex;
-    height: 10%;
-    margin: auto;
-    background-color: white;
-    border-radius: 5px;
-    width: 300px;
-    margin-top: 5px;
-
+  display: flex;
+  height: 10%;
+  margin: auto;
+  background-color: white;
+  border-radius: 5px;
+  width: 300px;
+  margin-top: 5px;
 }
 .text-field {
-    width: 80px;
-    margin-right: 50px;
+  width: 80px;
+  margin-right: 50px;
 }
 .salary {
-    width: 80px;
-    
+  width: 80px;
 }
 .submit-btn {
-    margin-left: 30px;
-    background-color: #FFCE00;
-    width: 80px;
-    border-radius: 5px;
+  margin-left: 30px;
+  background-color: #ffce00;
+  width: 80px;
+  border-radius: 5px;
 }
 .tax-div {
-    background-color: #888;
-    width: 400px;
-    height: 300px;
-    border-radius: 10px;
-    text-align: center;
-    float: left;
-    margin-left: 30px;
-    box-shadow: 10px 7px 47px -23px rgba(0,0,0,0.75);
--webkit-box-shadow: 10px 7px 47px -23px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 7px 47px -23px rgba(0,0,0,0.75);
+  background-color: #a9a9a9;
+  width: 400px;
+  height: 320px;
+  border-radius: 10px;
+  text-align: center;
+  float: left;
+  margin-left: 30px;
+  box-shadow: 10px 7px 47px -23px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 10px 7px 47px -23px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 7px 47px -23px rgba(0, 0, 0, 0.75);
 }
 .salary-expenses {
-    float: left;
-    width: 700px;
-    height: 300px;
-    border-radius: 10px;
-    text-align: center;
-    background-color: #888;
-    margin-left: 50px;
-    box-shadow: 10px 7px 47px -23px rgba(0,0,0,0.75);
--webkit-box-shadow: 10px 7px 47px -23px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 7px 47px -23px rgba(0,0,0,0.75);
+  float: left;
+  width: 700px;
+  height: 320px;
+  border-radius: 10px;
+  background-color: #a9a9a9;
+  margin-left: 50px;
+  box-shadow: 10px 7px 47px -23px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 10px 7px 47px -23px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 7px 47px -23px rgba(0, 0, 0, 0.75);
 }

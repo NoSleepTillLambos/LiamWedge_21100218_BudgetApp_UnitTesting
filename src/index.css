@@ -41,7 +41,9 @@ h1 {
   font-weight: 600;
   text-align: left;
 }
-
+h3 {
+  text-align: center;
+}
 .total-income {
   color: var(--grey);
   font-size: 28px;
@@ -169,4 +171,91 @@ h1 {
 }
 .income-list .income-item:hover {
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ------------------------------------ ALL CSS FOR THE EXPENSES TAB --------------------------------------------- */
+.btn-icon {
+  margin-left: 0.75rem;
+  font-size: 1.2rem;
+}
+.btn {
+  text-decoration: none;
+  color: var(--mainWhite);
+  background-color: var(--primaryColor);
+  text-align: center;
+  letter-spacing: 0.5px;
+  font-size: 14px;
+  outline: 0;
+  border: none;
+  border-radius: 5px;
+  display: block;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 16px;
+  text-transform: uppercase;
+  margin: 0 auto;
+  background-color: #ffce00;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  align-items: center;
+}
+.btn:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.list {
+  margin: 2rem 0.75rem 0 0.75rem;
+  list-style-type: none;
+  border: none;
+  padding: 0;
+}
+.total {
+  font-weight: 300;
+  color: var(--mainWhite);
+  background-color: var(--primaryColor);
+  border-radius: 2px;
+  padding: 2px 5px;
+}
+.total {
+  font-weight: 300;
+  color: var(--mainWhite);
+  background-color: var(--primaryColor);
+  border-radius: 2px;
+  padding: 2px 5px;
+}
+.item {
+  background-color: var(--mainWhite);
+  line-height: 1.5rem;
+  padding: 10px 20px;
+  margin-bottom: 1rem;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  transition: all 0.3s linear;
+}
+.clear-btn,
+.edit-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  outline: none;
+  cursor: pointer;
+}
+.info {
+  flex: 0 0 60%;
+  display: flex;
+  justify-content: space-between;
+}
+.amount {
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--mainWhite);
+  background-color: var(--primaryColor);
+  border-radius: 2px;
+  padding: 1px 3px;
+}
+.expense {
+  margin-right: 2rem;
+  text-transform: capitalize;
 }

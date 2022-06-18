@@ -1,7 +1,23 @@
 import React from "react";
+import { MdDelete, MdEdit } from "react-icons/md";
 
-function ExpenseItem() {
-  return <div>ExpenseItem</div>;
-}
+const ExpenseItem = ({ expense }) => {
+  const { id, charge, amount } = expense;
+
+  return (
+    <li className="item">
+      <div className="info">
+        <span className="expense">{charge}</span>
+        <span className="amount">R{amount}</span>
+      </div>
+      <button className="edit-btn" aria-label="edit button">
+        <MdEdit />
+      </button>
+      <button className="clear-btn" aria-label="clear button">
+        <MdDelete />
+      </button>
+    </li>
+  );
+};
 
 export default ExpenseItem;

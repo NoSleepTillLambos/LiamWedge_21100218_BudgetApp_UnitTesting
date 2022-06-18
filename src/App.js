@@ -52,8 +52,9 @@ function App() {
         </div>
 
         <div className="salary-expenses">
-          <h3>Expenses</h3>
-          <ExpenseItem expenses={expenses} />
+          <ExpenseForm />
+          <ExpenseList expenses={expenses} />
+
           <h3>
             Total expenditure:{" "}
             <span className="total">
