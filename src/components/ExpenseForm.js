@@ -39,6 +39,7 @@ const ExpenseForm = ({
             placeholder="e.g 1000"
             value={amount}
             onChange={handleAmount}
+            aria-label="amount"
           ></input>
         </div>
       </div>

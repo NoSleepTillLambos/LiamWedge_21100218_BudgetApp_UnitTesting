@@ -19,7 +19,7 @@ const ExpenseList = ({ expenses, handleDelete, handleEdit, clearItems }) => {
         })}
       </ul>
       {expenses.length > 0 && (
-        <button className="btn" onClick={clearItems}>
+        <button className="btn" onClick={clearItems} aria-label="clear">
           clear expenses
           <MdDelete className="btn-icon" />
         </button>

@@ -2,6 +2,9 @@ import App from "../App";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Alert from "../components/Alert";
+import ExpenseForm from "../components/ExpenseForm";
+import Header from "../components/Header";
+import ExpenseList from "../components/ExpenseList";
 
 describe("Testing the interaction of our forms", () => {
   // testing an example of rendering our component in the virtual dom
@@ -39,39 +42,36 @@ describe("Testing the interaction of our forms", () => {
     expect(inputNumberTwoElement).toBe(4);
   });
 
-  test("check if our button calc works", () => {
-    const inputNumberOneElement = screen.getByLabelText(/numberOne/i);
-    const inputNumberTwoElement = screen.getByLabelText(/numberTwo/i);
+  test("test if values are being displayed on screen", () => {
+    render(<Header />);
 
-    // interact with our input elements
-    userEvent.type(inputNumberOneElement, "2");
-    userEvent.type(inputNumberTwoElement, "4");
-
-    // query the button element
-    const calculateButton = screen.getByRole("button", { name: /submit/i });
-
-    // click on the button
-    userEvent.click(calculateButton);
-
-    // check if our calculation was successful
-    const resultElement = screen.getByText("The sum is: ", { exact: false });
-
-    // if this result element exists
-    expect(resultElement).toBe("The sum is 6");
-    expect(resultElement).toBeInTheDocument();
+    const amount = screen.getAllByLabelText(/title/);
+    expect(amount).toBe("Budget buddy");
   });
-  test("Testing if state is empty on load", () => {
-    render(<App />);
+
+  test("checking if button works", () => {
+    render(<ExpenseForm />);
+  });
+  test("Testing if amount is empty on load", () => {
+    render(<ExpenseForm />);
+
+    const amount = screen.getAllByLabelText(/amount/);
+    expect(amount).toBe("");
   });
 
   test("testing if alert is displaying correctly on screen", async () => {
     render(<Alert />);
-
+    render(<App />);
     // Click button
     fireEvent.click(screen.getByText("Load"));
 
     // Wait for page to update with query text
     const items = await screen.findAllByText(/Item #[0-9]: /);
     expect(items).toHaveLength(10);
+  });
+  test("testing for button render", async () => {
+    render(<ExpenseList />);
+    const amount = screen.getAllByLabelText(/clear/);
+    expect(amount).toBe("");
   });
 });
