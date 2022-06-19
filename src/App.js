@@ -10,7 +10,8 @@ import ListSalary from "./components/ListSalary";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseItem from "./components/ExpenseItem";
 import ExpenseList from "./components/ExpenseList";
-import uuid from "uuid";
+import { v4 as uuidv4 } from "uuid";
+import Alert from "./components/Alert";
 
 function App() {
   // tax bracket code and salary
@@ -32,14 +33,66 @@ function App() {
     }
     setTotalIncome(temp);
   }, [income]);
-  // end of code for adding expenses
 
-  const initialExpenses = [{ uuid: 1, charge: "rent", amount: 1600 }];
+  // ------------------------------------- code for adding expenses ------------------------------------------------- //
+  const initialExpenses = [{ uuidv4: 1, charge: "rent", amount: 1600 }];
 
   const [expenses, setExpenses] = useState(initialExpenses);
+  const [charge, setCharge] = useState("");
+  const [amount, setAmount] = useState("");
+
+  // handling the alert
+  const [alert, setAlert] = useState({ show: false });
+
+  const handleCharge = (e) => {
+    setCharge(e.target.value);
+  };
+
+  const handleAmount = (e) => {
+    setAmount(e.target.value);
+  };
+
+  // handle alert
+  const handleAlert = ({ type, text }) => {
+    setAlert({ show: true, type, text });
+    setTimeout(() => {
+      setAlert({ show: false });
+    }, 3000);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (charge !== "" && amount > 0) {
+      const singleExpense = { id: uuidv4(), charge, amount };
+      setExpenses([...expenses, singleExpense]);
+      setCharge("");
+      setAmount("");
+      handleAlert({ type: "success", text: "Item added successfully" });
+    } else {
+      // handle alert
+      handleAlert({ type: "danger", text: `charge cannot be an empty value` });
+    }
+  };
+
+  // clear all items
+  const clearItems = () => {
+    setExpenses([]);
+  };
+
+  // handle delete
+  const handleDelete = (id) => {
+    console.log(`item deleted: ${id}`);
+  };
+
+  // handle edit
+  const handleEdit = (id) => {
+    console.log(`item edited: ${id}`);
+  };
 
   return (
     <>
+      {alert.show && <Alert type={alert.type} text={alert.text} />}
+      <Alert />
       <div className="App">
         <Header totalIncome={totalIncome} />
         <IncomeForm income={income} setIncome={setIncome} />
@@ -52,21 +105,30 @@ function App() {
         </div>
 
         <div className="salary-expenses">
-          <ExpenseForm />
-          <ExpenseList expenses={expenses} />
+          <ExpenseForm
+            handleSubmit={handleSubmit}
+            charge={charge}
+            handleCharge={handleCharge}
+            amount={amount}
+            handleAmount={handleAmount}
+          />
+          <ExpenseList
+            expenses={expenses}
+            handleDelete={handleDelete}
+            handleEdit={handleEdit}
+            clearItems={clearItems}
+          />
 
           <h3>
             Total expenditure:{" "}
             <span className="total">
               ${" "}
               {expenses.reduce((acc, curr) => {
-                return (acc += curr.amount);
+                return (acc += parseInt(curr.amount));
               }, 0)}
             </span>
           </h3>
         </div>
-
-        <Savings />
         <button className="button-one" />
       </div>
     </>

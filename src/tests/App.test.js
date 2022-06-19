@@ -1,31 +1,16 @@
-import SumForm from "../SumForm";
+import App from "../App";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import Alert from "../components/Alert";
 
-describe("Testing our forms interaction", () => {
+describe("Testing the interaction of our forms", () => {
   // testing an example of rendering our component in the virtual dom
   // and selecting elements
 
   beforeEach(() => {
-    render(<SumForm />);
+    render(<App />);
     // console.log("consoled when test starts")
   });
-
-  const typeInput = ({ inputOne, inputTwo }) => {
-    const inputNumberOneElement = screen.getByLabelText(/numberOne/i);
-    const inputNumberTwoElement = screen.getByLabelText(/numberTwo/i);
-
-    if (inputOne) {
-      userEvent.type(inputNumberOneElement, inputOne);
-    }
-    if (inputTwo) {
-      userEvent.type(inputNumberTwoElement, inputTwo);
-    }
-    return {
-      inputNumberOneElement,
-      inputNumberTwoElement,
-    };
-  };
 
   afterAll(() => {
     console.log("performed after all the tests have run");
@@ -38,8 +23,8 @@ describe("Testing our forms interaction", () => {
     expect(inputNumberOneElement.value).toBe("");
   });
 
-  test("test if values are updated correctly", () => {
-    render(<SumForm />);
+  test("test if values are being displayed on screen", () => {
+    render(<Alert />);
 
     // select our components
     const inputNumberOneElement = screen.getByLabelText(/numberOne/i);
@@ -74,5 +59,19 @@ describe("Testing our forms interaction", () => {
     // if this result element exists
     expect(resultElement).toBe("The sum is 6");
     expect(resultElement).toBeInTheDocument();
+  });
+  test("Testing if state is empty on load", () => {
+    render(<App />);
+  });
+
+  test("testing if alert is displaying correctly on screen", async () => {
+    render(<Alert />);
+
+    // Click button
+    fireEvent.click(screen.getByText("Load"));
+
+    // Wait for page to update with query text
+    const items = await screen.findAllByText(/Item #[0-9]: /);
+    expect(items).toHaveLength(10);
   });
 });
